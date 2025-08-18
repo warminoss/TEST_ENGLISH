@@ -3,25 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{{ page.title | escape }} — {{ site.title | escape }}</title>
+  <title>{{ page.title | escape }}</title>
   <meta name="description" content="{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}">
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
-  <header class="wrap">
-    <h1><a href="/">{{ site.title }}</a></h1>
-    {% include nav.html %}
-  </header>
+  <div class="shell">
+    <aside class="sidebar">
+      {% include nav.html %}
+    </aside>
 
-  <main class="wrap">
-    <article class="content">
-      <h2>{{ page.title }}</h2>
-      {{ content }}
-    </article>
-  </main>
-
-  <footer class="wrap">
-    <p>© {{ site.time | date: "%Y" }} — {{ site.title }}</p>
-  </footer>
+    <main class="content">
+      {{ content }}  <!-- pas de H1 automatique : le layout n’affiche pas page.title -->
+    </main>
+  </div>
 </body>
 </html>
