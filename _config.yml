@@ -1,0 +1,15 @@
+title: "Site Guillaume"
+description: "Pages fréquentes"
+markdown: kramdown
+theme: null
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+permalink: /:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
