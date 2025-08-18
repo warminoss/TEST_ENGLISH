@@ -1,29 +1,29 @@
 /* =========================
    UNK FOOD — pastel acidulé
-   assets/styles.css
+   assets/styles.css (complet)
    ========================= */
 
 /* ---------- Variables ---------- */
 :root{
-  --bg: #f9fbff;                 /* fond clair */
+  --bg: #f9fbff;                 /* fond clair dégradé */
   --panel: #ffffff;
   --ink: #0f172a;
   --muted: #667085;
   --shadow: 0 10px 30px rgba(16,24,40,.06);
 
-  /* Palette acidulée douce */
+  /* Palette acidulée (pastel punchy) */
   --pink:   #ff7ab8;  /* bubblegum */
   --mango:  #ffb347;  /* mangue */
   --lime:   #87e36b;  /* citron vert */
   --aqua:   #5fd3ff;  /* curaçao */
   --lilac:  #b394ff;  /* lilas */
-  --grape:  #7d64ff;  /* raisin néon */
+  --grape:  #7d64ff;  /* raisin */
 
-  /* Déclinaisons transparentes */
+  /* Variantes légères */
   --aqua-10:  rgba(95,211,255,.12);
   --lilac-10: rgba(179,148,255,.12);
 
-  /* Liens / états */
+  /* Liens / focus */
   --link: #2b6cff;
   --link-hover: #1f4fcc;
   --ring: rgba(43,108,255,.25);
@@ -106,50 +106,42 @@ a:hover{ text-decoration:underline; }
   padding:26px;
   text-align:center;            /* centre la bulle d’accueil */
 }
-
-/* Titres sobres si présents dans le contenu */
 .content h1,.content h2,.content h3{
   margin:0 0 12px;
   line-height:1.25;
 }
-
-/* Code blocks éventuels */
 code, pre{ background:#f6f8fb; border-radius:8px; padding:2px 6px; }
 pre{ padding:12px; overflow:auto; }
 
-/* ---------- Bulle arc-en-ciel animée ---------- */
+/* ---------- Bulle arc-en-ciel animée (compat Safari/Chrome/Firefox) ---------- */
 .rainbow-bubble{
-  position:relative;
   display:inline-block;
   max-width:100%;
-  margin: 12px auto 6px;
+  margin:12px auto 6px;
   padding:14px 18px;
   border-radius:999px;
-  background:#fff;                /* intérieur lisible */
-  color:var(--ink);
+
+  /* Technique des deux backgrounds : blanc au centre + dégradé pour la “bordure” */
+  border:3px solid transparent;
+  background:
+    linear-gradient(#fff,#fff) padding-box,
+    conic-gradient(from var(--angle),
+      var(--pink), var(--mango), var(--lime),
+      var(--aqua), var(--lilac), var(--grape), var(--pink)
+    ) border-box;
+
   box-shadow:0 8px 26px rgba(16,24,40,.08);
-  isolation:isolate;              /* pour un ring net au-dessus */
+  color:var(--ink);
+  animation: rb-spin 6s linear infinite;
 }
-.rainbow-bubble::before{
-  content:"";
-  position:absolute;
-  inset:-3px;                     /* épaisseur de l’anneau */
-  border-radius:inherit;
-  background: conic-gradient(
-    from 0deg,
-    var(--pink), var(--mango), var(--lime),
-    var(--aqua), var(--lilac), var(--grape), var(--pink)
-  );
-  /* On ne garde que l’anneau, pas le remplissage */
-  -webkit-mask:
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-          mask-composite: exclude;
-  animation: rainbow-spin 6s linear infinite;
-  z-index:-1;
+
+/* CSS Houdini pour animer le conic-gradient proprement */
+@property --angle{
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
-@keyframes rainbow-spin{ to{ transform: rotate(360deg); } }
+@keyframes rb-spin { to { --angle: 360deg; } }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px){
