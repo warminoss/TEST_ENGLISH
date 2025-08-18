@@ -4,4 +4,4 @@ layout: default
 permalink: /
 ---
 
-Bienvenue. Les nouvelles pages apparaissent automatiquement dans la navigation.
+<p>Bienvenue sur la page qui vous apprend l'anglais en regardant la télé.</p>
