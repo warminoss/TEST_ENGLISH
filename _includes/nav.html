@@ -1,7 +1,7 @@
 <nav class="nav">
   <a href="/">Accueil</a>
-  {% assign pages_sorted = site.pages | where_exp: "p","p.path contains '/pages/'" | sort: "title" %}
-  {% for p in pages_sorted %}
+  {%- assign pages_sorted = site.pages | where: "dir", "/pages/" | sort: "title" -%}
+  {%- for p in pages_sorted -%}
     <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
-  {% endfor %}
+  {%- endfor -%}
 </nav>
