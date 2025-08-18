@@ -1,87 +1,42 @@
-/* --- variables --- */
-:root{
-  --bg: #f3f4f6;       /* fond gris très léger */
-  --panel: #ffffff;    /* cartes / contenu */
-  --ink: #0f172a;      /* texte principal (bleu-noir) */
-  --muted: #64748b;    /* texte secondaire */
-  --link: #2b6cff;     /* bleu liens (comme ton HTML) */
-  --link-hover: #1f4fcc;
-  --shadow: 0 8px 30px rgba(2,10,35,.06);
-}
-
-/* --- base --- */
-*{ box-sizing: border-box; }
-html,body{ margin:0; padding:0; }
-body{
-  font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color: var(--ink);
-  background: var(--bg);
-}
-
 /* --- grille --- */
 .shell{
   display: grid;
-  grid-template-columns: 220px minmax(0,1fr);
+  grid-template-columns: 180px minmax(0,1fr); /* menu un peu plus fin */
   gap: 28px;
   padding: 24px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-/* --- sidebar / nav --- */
+/* --- sidebar --- */
 .sidebar{
   position: sticky;
   top: 16px;
   align-self: start;
+  height: 100vh;
+  padding-top: 12px;
+  padding-left: 0;
+  background: none;      /* plus de carte blanche */
+  box-shadow: none;      /* pas d’ombre */
 }
 
+/* --- nav --- */
 .nav{
-  background: var(--panel);
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .nav-item{
   display: block;
-  font-size: 14px;              /* discret */
-  color: var(--link);            /* même bleu que ton HTML */
+  font-size: 14px;
+  color: var(--link);
   text-decoration: none;
-  padding: 8px 10px;
-  border-radius: 8px;
+  padding: 6px 8px;
+  border-radius: 6px;
 }
 
 .nav-item:hover{
   background: #f0f6ff;
   color: var(--link-hover);
 }
-
-/* --- contenu --- */
-.content{
-  background: var(--panel);
-  border-radius: 18px;
-  box-shadow: var(--shadow);
-  padding: 22px;
-}
-
-/* titrages laissés sobres (si tu en mets dans le contenu) */
-.content h1, .content h2, .content h3{
-  margin: 0 0 12px;
-  line-height: 1.25;
-}
-
-.content p{ margin: 0 0 12px; }
-
-/* images / vidéos fluides */
-.content img, .content video{ max-width: 100%; height: auto; display: block; }
-
-/* code inline / blocs éventuels */
-code, pre{ background:#f6f8fb; border-radius:8px; padding:2px 6px; }
-pre{ padding:12px; overflow:auto; }
-
-/* liens dans le contenu */
-.content a{ color: var(--link); text-decoration: none; }
-.content a:hover{ text-decoration: underline; }
-
-/* supprimer toute trace d’anciens footers éventuels dans le contenu */
-.site-footer{ display:none !important; }
