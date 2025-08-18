@@ -4,5 +4,13 @@ layout: default
 permalink: /
 ---
 
-<p style="margin:0 0 12px 0;font-weight:600">Bienvenue sur la page qui vous apprend l’anglais en regardant la télé.</p>
-<p style="color:#667085">Choisissez un module dans le menu à gauche.</p>
+<div class="pills">
+  <span class="pill pill--aqua">Vocabulaire</span>
+  <span class="pill pill--mango">Cartes Mémoire</span>
+  <span class="pill pill--pink">Quiz</span>
+  <span class="pill pill--lime">Facile</span>
+  <span class="pill pill--grape">Difficile</span>
+  <span class="pill pill--lilac">Mélanger</span>
+</div>
+
+<p style="margin:4px 0 0 0;color:var(--muted)">Choisissez un module dans le menu à gauche.</p>
