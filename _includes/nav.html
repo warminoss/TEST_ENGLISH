@@ -1,6 +1,10 @@
 <nav class="nav">
   <a href="/">Accueil</a>
-  {%- assign pages_sorted = site.pages | where: "dir", "/pages/" | sort: "title" -%}
+  {%- comment -%}
+    On sélectionne les pages dont le FICHIER source est dans le dossier "pages/",
+    indépendamment de l’URL finale (qui, avec permalink: /:title/, sera à la racine).
+  {%- endcomment -%}
+  {%- assign pages_sorted = site.pages | where_exp: "p", "p.path contains 'pages/'" | sort: "title" -%}
   {%- for p in pages_sorted -%}
     <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
   {%- endfor -%}
