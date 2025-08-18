@@ -1,12 +1,17 @@
-/* ===== Thème UNK FOOD — pastel acidulé ===== */
+/* =========================
+   UNK FOOD — pastel acidulé
+   assets/styles.css
+   ========================= */
+
+/* ---------- Variables ---------- */
 :root{
   --bg: #f9fbff;                 /* fond clair */
   --panel: #ffffff;
   --ink: #0f172a;
-  --muted: #6b7280;
+  --muted: #667085;
   --shadow: 0 10px 30px rgba(16,24,40,.06);
 
-  /* Palette acidulée (pastel mais punchy) */
+  /* Palette acidulée douce */
   --pink:   #ff7ab8;  /* bubblegum */
   --mango:  #ffb347;  /* mangue */
   --lime:   #87e36b;  /* citron vert */
@@ -14,25 +19,29 @@
   --lilac:  #b394ff;  /* lilas */
   --grape:  #7d64ff;  /* raisin néon */
 
-  /* Dérivés doux pour hovers / surfaces */
-  --pink-10:  rgba(255,122,184,.12);
-  --mango-10: rgba(255,179,71,.12);
-  --lime-10:  rgba(135,227,107,.12);
+  /* Déclinaisons transparentes */
   --aqua-10:  rgba(95,211,255,.12);
   --lilac-10: rgba(179,148,255,.12);
-  --grape-10: rgba(125,100,255,.12);
+
+  /* Liens / états */
+  --link: #2b6cff;
+  --link-hover: #1f4fcc;
+  --ring: rgba(43,108,255,.25);
 }
 
-/* ===== Base ===== */
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
+/* ---------- Reset & base ---------- */
+*{ box-sizing:border-box; }
+html, body{ margin:0; padding:0; }
 body{
   font:16px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
   color:var(--ink);
   background: linear-gradient(180deg,#f6f8ff 0%,#f9fbff 30%,#fefcff 100%);
 }
+img, video{ max-width:100%; height:auto; display:block; }
+a{ color:var(--link); text-decoration:none; }
+a:hover{ text-decoration:underline; }
 
-/* ===== Grille ===== */
+/* ---------- Grille ---------- */
 .shell{
   display:grid;
   grid-template-columns: 230px minmax(0,1fr);
@@ -42,8 +51,12 @@ body{
   margin:0 auto;
 }
 
-/* ===== Sidebar / Nav ===== */
-.sidebar{ position:sticky; top:18px; align-self:start; }
+/* ---------- Sidebar / Navigation ---------- */
+.sidebar{
+  position:sticky;
+  top:18px;
+  align-self:start;
+}
 
 .nav{
   background: linear-gradient(180deg,#fff 0%,#f7f9ff 100%);
@@ -53,7 +66,7 @@ body{
   box-shadow:var(--shadow);
 }
 
-/* Accueil = “brand” */
+/* Lien “Accueil” en tête */
 .nav .brand{
   display:block;
   font-weight:700;
@@ -63,7 +76,7 @@ body{
   color:#1b3cff;
   background: linear-gradient(90deg, var(--aqua-10), var(--lilac-10));
 }
-.nav .brand:hover{ filter: saturate(1.1); }
+.nav .brand:hover{ filter:saturate(1.1); }
 
 /* Items */
 .nav-item{
@@ -76,54 +89,71 @@ body{
   transition:transform .12s ease, background .12s ease;
 }
 .nav-item:hover{
-  background: linear-gradient(90deg, var(--aqua-10), var(--pink-10));
+  background: linear-gradient(90deg, var(--aqua-10), var(--lilac-10));
   transform: translateX(2px);
 }
 .nav-item.active{
-  background: #fff;
-  outline: 2px solid rgba(27,60,255,.18);
+  background:#fff;
+  outline:2px solid rgba(27,60,255,.18);
+  box-shadow:0 0 0 3px var(--ring);
 }
 
-/* ===== Contenu ===== */
+/* ---------- Contenu ---------- */
 .content{
   background:var(--panel);
   border-radius:22px;
   box-shadow:var(--shadow);
   padding:26px;
+  text-align:center;            /* centre la bulle d’accueil */
 }
-.content a{ color:#1b3cff; text-decoration:none; }
-.content a:hover{ text-decoration:underline; }
 
-/* ===== Bulles / pills colorées ===== */
-.pills{ display:flex; flex-wrap:wrap; gap:10px; margin:6px 0 16px; }
-.pill{
-  display:inline-flex; align-items:center; gap:8px;
-  padding:8px 12px; border-radius:999px; font-weight:600;
-  background:#fff; border:1px solid transparent;
-  box-shadow: 0 2px 10px rgba(16,24,40,.06);
+/* Titres sobres si présents dans le contenu */
+.content h1,.content h2,.content h3{
+  margin:0 0 12px;
+  line-height:1.25;
 }
-.pill.small{ padding:6px 10px; font-weight:600; font-size:13px; }
 
-/* variantes pastel acidulé */
-.pill--pink{  color:#a01561; border-color:var(--pink-10);  background:linear-gradient(180deg,#fff, var(--pink-10)); }
-.pill--mango{ color:#7a3d00; border-color:var(--mango-10); background:linear-gradient(180deg,#fff, var(--mango-10)); }
-.pill--lime{  color:#215b1e; border-color:var(--lime-10);  background:linear-gradient(180deg,#fff, var(--lime-10)); }
-.pill--aqua{  color:#0a5672; border-color:var(--aqua-10);  background:linear-gradient(180deg,#fff, var(--aqua-10)); }
-.pill--lilac{ color:#3e2a7a; border-color:var(--lilac-10); background:linear-gradient(180deg,#fff, var(--lilac-10)); }
-.pill--grape{ color:#2e22a8; border-color:var(--grape-10); background:linear-gradient(180deg,#fff, var(--grape-10)); }
+/* Code blocks éventuels */
+code, pre{ background:#f6f8fb; border-radius:8px; padding:2px 6px; }
+pre{ padding:12px; overflow:auto; }
 
-/* Boutons doux (si besoin) */
-.btn{
-  display:inline-block; border:0; border-radius:12px; padding:10px 14px; font-weight:700;
-  color:#fff; background:linear-gradient(90deg,var(--grape),var(--aqua));
-  box-shadow: 0 6px 18px rgba(45,99,255,.25);
-  cursor:pointer;
+/* ---------- Bulle arc-en-ciel animée ---------- */
+.rainbow-bubble{
+  position:relative;
+  display:inline-block;
+  max-width:100%;
+  margin: 12px auto 6px;
+  padding:14px 18px;
+  border-radius:999px;
+  background:#fff;                /* intérieur lisible */
+  color:var(--ink);
+  box-shadow:0 8px 26px rgba(16,24,40,.08);
+  isolation:isolate;              /* pour un ring net au-dessus */
 }
-.btn:hover{ filter:brightness(1.05) saturate(1.05); }
+.rainbow-bubble::before{
+  content:"";
+  position:absolute;
+  inset:-3px;                     /* épaisseur de l’anneau */
+  border-radius:inherit;
+  background: conic-gradient(
+    from 0deg,
+    var(--pink), var(--mango), var(--lime),
+    var(--aqua), var(--lilac), var(--grape), var(--pink)
+  );
+  /* On ne garde que l’anneau, pas le remplissage */
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  animation: rainbow-spin 6s linear infinite;
+  z-index:-1;
+}
+@keyframes rainbow-spin{ to{ transform: rotate(360deg); } }
 
-/* ===== Responsive ===== */
+/* ---------- Responsive ---------- */
 @media (max-width: 860px){
-  .shell{ grid-template-columns: 1fr; gap:16px; }
+  .shell{ grid-template-columns:1fr; gap:16px; }
   .sidebar{ position:static; }
   .nav{ display:flex; flex-wrap:wrap; gap:8px; }
   .nav .brand{ margin-right:6px; }
