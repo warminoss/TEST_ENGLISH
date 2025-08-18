@@ -1,94 +1,131 @@
-/* ---------- thème ---------- */
+/* ===== Thème UNK FOOD — pastel acidulé ===== */
 :root{
-  --bg:#eef3ff;              /* fond bleu très léger */
-  --panel:#ffffff;
-  --ink:#0f172a;
-  --muted:#667085;
-  --link:#2b6cff;            /* bleu “app” */
-  --link-hover:#1f4fcc;
-  --ring:rgba(43,108,255,.25);
-  --shadow:0 10px 30px rgba(16,24,40,.06);
+  --bg: #f9fbff;                 /* fond clair */
+  --panel: #ffffff;
+  --ink: #0f172a;
+  --muted: #6b7280;
+  --shadow: 0 10px 30px rgba(16,24,40,.06);
+
+  /* Palette acidulée (pastel mais punchy) */
+  --pink:   #ff7ab8;  /* bubblegum */
+  --mango:  #ffb347;  /* mangue */
+  --lime:   #87e36b;  /* citron vert */
+  --aqua:   #5fd3ff;  /* curaçao */
+  --lilac:  #b394ff;  /* lilas */
+  --grape:  #7d64ff;  /* raisin néon */
+
+  /* Dérivés doux pour hovers / surfaces */
+  --pink-10:  rgba(255,122,184,.12);
+  --mango-10: rgba(255,179,71,.12);
+  --lime-10:  rgba(135,227,107,.12);
+  --aqua-10:  rgba(95,211,255,.12);
+  --lilac-10: rgba(179,148,255,.12);
+  --grape-10: rgba(125,100,255,.12);
 }
 
-/* ---------- base ---------- */
+/* ===== Base ===== */
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
   font:16px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-  color:var(--ink); background:var(--bg);
+  color:var(--ink);
+  background: linear-gradient(180deg,#f6f8ff 0%,#f9fbff 30%,#fefcff 100%);
 }
 
-/* ---------- grille ---------- */
+/* ===== Grille ===== */
 .shell{
   display:grid;
-  grid-template-columns: 220px minmax(0,1fr);
+  grid-template-columns: 230px minmax(0,1fr);
   gap:28px;
   max-width:1280px;
   padding:24px;
   margin:0 auto;
 }
 
-/* ---------- sidebar ---------- */
+/* ===== Sidebar / Nav ===== */
 .sidebar{ position:sticky; top:18px; align-self:start; }
 
-/* bloc nav bleu discret */
 .nav{
-  background:linear-gradient(180deg,#f7f9ff 0%,#eef3ff 100%);
-  border:1px solid rgba(43,108,255,.10);
-  border-radius:16px;
+  background: linear-gradient(180deg,#fff 0%,#f7f9ff 100%);
+  border-radius:18px;
+  border:1px solid rgba(125,100,255,.12);
   padding:12px;
   box-shadow:var(--shadow);
 }
 
-/* lien Accueil en tête, même style que les items */
+/* Accueil = “brand” */
 .nav .brand{
   display:block;
-  margin-bottom:6px;
-  font-weight:600;
+  font-weight:700;
   text-decoration:none;
-  color:var(--link);
-  padding:8px 10px;
-  border-radius:10px;
+  padding:10px 12px;
+  border-radius:12px;
+  color:#1b3cff;
+  background: linear-gradient(90deg, var(--aqua-10), var(--lilac-10));
 }
-.nav .brand:hover{ background:rgba(43,108,255,.08); color:var(--link-hover); }
+.nav .brand:hover{ filter: saturate(1.1); }
 
-/* items */
+/* Items */
 .nav-item{
   display:block;
   font-size:14px;
-  color:var(--link);
   text-decoration:none;
+  color:#263a9b;
   padding:8px 10px;
   border-radius:10px;
-  transition:all .15s ease;
+  transition:transform .12s ease, background .12s ease;
 }
 .nav-item:hover{
-  background:rgba(43,108,255,.08);
-  color:var(--link-hover);
+  background: linear-gradient(90deg, var(--aqua-10), var(--pink-10));
+  transform: translateX(2px);
 }
 .nav-item.active{
-  background:#ffffff;
-  border:1px solid rgba(43,108,255,.35);
-  box-shadow:0 0 0 3px var(--ring);
-  color:var(--link);
+  background: #fff;
+  outline: 2px solid rgba(27,60,255,.18);
 }
 
-/* ---------- contenu ---------- */
+/* ===== Contenu ===== */
 .content{
   background:var(--panel);
-  border-radius:20px;
+  border-radius:22px;
   box-shadow:var(--shadow);
-  padding:24px;
+  padding:26px;
 }
-
-.content a{ color:var(--link); text-decoration:none; }
+.content a{ color:#1b3cff; text-decoration:none; }
 .content a:hover{ text-decoration:underline; }
 
-/* responsive: barre en haut sur mobile */
-@media (max-width: 820px){
-  .shell{ grid-template-columns: 1fr; }
+/* ===== Bulles / pills colorées ===== */
+.pills{ display:flex; flex-wrap:wrap; gap:10px; margin:6px 0 16px; }
+.pill{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 12px; border-radius:999px; font-weight:600;
+  background:#fff; border:1px solid transparent;
+  box-shadow: 0 2px 10px rgba(16,24,40,.06);
+}
+.pill.small{ padding:6px 10px; font-weight:600; font-size:13px; }
+
+/* variantes pastel acidulé */
+.pill--pink{  color:#a01561; border-color:var(--pink-10);  background:linear-gradient(180deg,#fff, var(--pink-10)); }
+.pill--mango{ color:#7a3d00; border-color:var(--mango-10); background:linear-gradient(180deg,#fff, var(--mango-10)); }
+.pill--lime{  color:#215b1e; border-color:var(--lime-10);  background:linear-gradient(180deg,#fff, var(--lime-10)); }
+.pill--aqua{  color:#0a5672; border-color:var(--aqua-10);  background:linear-gradient(180deg,#fff, var(--aqua-10)); }
+.pill--lilac{ color:#3e2a7a; border-color:var(--lilac-10); background:linear-gradient(180deg,#fff, var(--lilac-10)); }
+.pill--grape{ color:#2e22a8; border-color:var(--grape-10); background:linear-gradient(180deg,#fff, var(--grape-10)); }
+
+/* Boutons doux (si besoin) */
+.btn{
+  display:inline-block; border:0; border-radius:12px; padding:10px 14px; font-weight:700;
+  color:#fff; background:linear-gradient(90deg,var(--grape),var(--aqua));
+  box-shadow: 0 6px 18px rgba(45,99,255,.25);
+  cursor:pointer;
+}
+.btn:hover{ filter:brightness(1.05) saturate(1.05); }
+
+/* ===== Responsive ===== */
+@media (max-width: 860px){
+  .shell{ grid-template-columns: 1fr; gap:16px; }
   .sidebar{ position:static; }
-  .nav{ display:flex; flex-wrap:wrap; gap:6px; }
-  .nav .brand{ margin:0 6px 0 0; }
+  .nav{ display:flex; flex-wrap:wrap; gap:8px; }
+  .nav .brand{ margin-right:6px; }
   .nav-item{ display:inline-block; }
 }
