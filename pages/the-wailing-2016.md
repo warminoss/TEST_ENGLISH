@@ -2,7 +2,7 @@
 title: The Wailing (2016)
 layout: default
 ---
-<!DOCTYPE html>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
